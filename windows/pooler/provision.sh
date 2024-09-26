@@ -63,10 +63,5 @@ fi
 # get the password of vmpooler by reading the .pooler_password file
 pass=$(cat .pooler_password)
 
-echo "Provisioned $fqdn, lets install the agent"
-bolt task run puppet_agent::install --project ./windows/bootstrap --no-host-key-check -t "winrm://$fqdn" -u Administrator --password "$pass" --no-ssl
-
 echo "Lets bootstrap the node"
-
-# Now lets run bolt to bootstrap the node from the windows/bootsrap folder
 bolt plan run bootstrap --project ./windows/bootstrap --no-host-key-check -t "winrm://$fqdn" -u Administrator --password "$pass" --no-ssl

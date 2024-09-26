@@ -61,7 +61,6 @@ up:
 	@[ "${PLAT}" ] || $(call log_error, "Operating System is not defined")
 	@[ "${VERSION}" ] || $(call log_error, "Version is not defined")
 
-	# if env variable VMPooler is set, then run the provision.sh script
 	if [ "${PROVISIONER}" = "pooler" ]; then \
 		${PLAT}/${PROVISIONER}/provision.sh ${VERSION}; \
 	else \
